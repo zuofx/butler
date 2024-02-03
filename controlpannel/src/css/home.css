@@ -7,18 +7,18 @@
     flex-direction: column;
     margin: 0 auto;
 
-    width: 70vw;
+    width: 60vw;
 }
 
 .tech-title-container {
     display: flex;
     flex-direction: row;
+
+    margin-bottom: 1vw;
 }
 .tech-title {
     color: #E1E2EF;
     text-align: left;
-
-    color: #E1E2EF;
 
     font-size: 2vw;
     font-weight: 700;
@@ -31,7 +31,7 @@
     align-items: center;
     justify-content: center;
     
-    width: 18%;
+    width: 10vw;
     height: 40px;
     
     margin: auto auto;

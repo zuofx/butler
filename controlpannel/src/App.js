@@ -1,5 +1,5 @@
 import './App.css';
-
+import AnimatedCursor from "react-animated-cursor"
 
 import {
   BrowserRouter as Router,
@@ -17,6 +17,7 @@ import Header from './components/header.js'
 function App() {
   return (
     <div className="App">
+      <AnimatedCursor />
       <Header/>
 
       <Router>
