@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-
 import '../css/createform.css';
+
+// import {writeJsonFile} from 'write-json-file';
 
 const CreateForm = () => {
   const [formData, setFormData] = useState({
@@ -32,7 +33,7 @@ const CreateForm = () => {
       };
 
       //NEXT: figure out how to write json to techniques.json
-
+    // writeJsonFile("/data/techniques.json", newTechnique)
     
     console.log('Form data submitted:', newTechnique);
   };

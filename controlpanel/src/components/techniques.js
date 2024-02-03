@@ -38,6 +38,7 @@ const Techniques = ({name, desc, prompt, script, extra}) => {
                         <div className="tl-name">{name}</div>
                         <div className="tl-desc"><span>Description:</span> {desc}</div>
                         <div className="tl-prompt"><span>Prompt:</span> "{prompt}"</div>
+                        <div className="tl-prompt"><span>Script</span> "{script}"</div>
                     </div>
 
                     <div className = 'techniques-right'>
