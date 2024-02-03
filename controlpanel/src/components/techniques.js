@@ -81,14 +81,14 @@ const Techniques = ({name, desc, prompt, script, extra}) => {
                     {extra.length > 0 && (
                         <div className="name-edit-holder">
                             {extra.map((item, index) => (
-                                <div key={index} className="tl-extra-item">
+                                <>
                                     <div className="name-title">{item}</div>
                                     <input 
                                         className="name-input"
                                         type="text"
                                         placeholder={`Enter ${item}`}
                                     />
-                                </div>
+                                </>
                             ))}
                         </div>
                     )}
