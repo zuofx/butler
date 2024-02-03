@@ -16,8 +16,28 @@ import Header from './components/header.js'
 
 function App() {
   return (
-    <div className="App">
-      <AnimatedCursor />
+      <div className="App">
+          <AnimatedCursor
+            innerSize={10}
+            outerSize={8}
+            color='255, 0, 240'
+            outerAlpha={0.4}
+            innerScale={0.7}
+            outerScale={5}
+            clickables={[
+              'a',
+              'input[type="text"]',
+              'input[type="email"]',
+              'input[type="number"]',
+              'input[type="submit"]',
+              'input[type="image"]',
+              'label[for]',
+              'select',
+              'textarea',
+              'button',
+              '.link'
+            ]}
+          />
       <Header/>
 
       <Router>
