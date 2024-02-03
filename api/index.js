@@ -1,36 +1,41 @@
-//installed express cors nodemon fs multer
-const express = require('express')
-const fs = require('fs')
-const cors = require('cors')
+// Import required modules
+const express = require('express');
+const fs = require('fs');
+const cors = require('cors');
+const multer = require('multer');
 
-const multer  = require('multer')
+// Create an Express application
+const app = express();
+
+// Set up middleware
+app.use(cors()); // Enable CORS
+app.use(express.json()); // Parse JSON requests
+
+// Define constants
+const PORT = 3002;
+const TECHNIQUES_FILE_PATH = './techniques.json';
+const SCRIPTS_UPLOAD_PATH = '../backend/scripts/';
+
+//define techniques
+const techniques = JSON.parse(fs.readFileSync(TECHNIQUES_FILE_PATH, 'utf-8'));
 
 
-const app = express()
-const techniques = require('./techniques.json')
-const PORT = 3002
-app.use(cors())
-app.use(express.json())
+// Start the server
+app.listen(PORT, () => {
+    console.log(`Server is running on ${PORT}`);
+});
 
-//RUN server on port 
-app.listen(PORT, ()=>{
-    console.log(`Server is running on ＄{PORT}`)
-})
-
-
-//Data gets put in json
-
+// Endpoint to get techniques data
 app.get("/api/techniques/get", (req, res) => {
     res.json(techniques);
-})
+});
 
-//Data from json sent to client
+// Endpoint to post new technique data
 app.post("/api/techniques/post", (req, res) => {
     const newTechnique = req.body;
-    // console.log(newTechnique);
 
     // Read existing content from the file
-    fs.readFile("./techniques.json", 'utf8', (err, data) => {
+    fs.readFile(TECHNIQUES_FILE_PATH, 'utf8', (err, data) => {
         if (err) {
             return res.status(500).send("Internal server error");
         }
@@ -42,7 +47,7 @@ app.post("/api/techniques/post", (req, res) => {
         existingTechniques.push(newTechnique);
 
         // Write the updated array back to the file
-        fs.writeFile("./techniques.json", JSON.stringify(existingTechniques, null, 2), 'utf8', (err) => {
+        fs.writeFile(TECHNIQUES_FILE_PATH, JSON.stringify(existingTechniques, null, 2), 'utf8', (err) => {
             if (err) {
                 return res.status(500).send("Internal server error");
             }
@@ -51,14 +56,13 @@ app.post("/api/techniques/post", (req, res) => {
     });
 });
 
-//Edit Json Data 
+// Endpoint to update technique data
 app.put("/api/techniques/put", (req, res) => {
     try {
         const updatedData = req.body; 
-        console.log(updatedData)
 
         // Load existing data from the file
-        const existingData = JSON.parse(fs.readFileSync('techniques.json', 'utf-8'));
+        const existingData = JSON.parse(fs.readFileSync(TECHNIQUES_FILE_PATH, 'utf-8'));
 
         // Find the index of the technique to be updated
         const index = existingData.findIndex(technique => technique.name === updatedData.name);
@@ -68,7 +72,7 @@ app.put("/api/techniques/put", (req, res) => {
             existingData[index] = updatedData;
 
             // Save the updated data back to the file
-            fs.writeFileSync('techniques.json', JSON.stringify(existingData, null, 2), 'utf-8');
+            fs.writeFileSync(TECHNIQUES_FILE_PATH, JSON.stringify(existingData, null, 2), 'utf-8');
 
             res.json({ message: 'Technique updated successfully' });
         } else {
@@ -80,25 +84,55 @@ app.put("/api/techniques/put", (req, res) => {
     }
 });
 
+// Multer configuration for file upload
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-      cb(null, '../backend/scripts/'); // Specify the folder where you want to store the uploaded files
+        cb(null, SCRIPTS_UPLOAD_PATH); 
     },
     filename: function (req, file, cb) {
-      cb(null, file.originalname);
+        cb(null, file.originalname);
     },
-  });
-  
-  const upload = multer({ storage: storage });
+});
 
+const upload = multer({ storage: storage });
+
+// Endpoint to post script files
 app.post('/api/scripts/post', upload.single('file'), (req, res) => {
     try {
         // console.log('File uploaded:', req.file);
-  
-  
         res.json({ message: 'File uploaded successfully' });
     } catch (error) {
         console.error('Error uploading file:', error);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-  });
+});
+
+// Endpoint to delete technique data based on name
+app.delete("/api/techniques/delete/:name", (req, res) => {
+    try {
+        const techniqueName = req.params.name;
+        console.log(techniqueName)
+        
+
+        // Load existing data from the file
+        const existingData = JSON.parse(fs.readFileSync(TECHNIQUES_FILE_PATH, 'utf-8'));
+
+        // Find the index of the technique to be deleted
+        const index = existingData.findIndex(technique => technique.name === techniqueName);
+
+        if (index !== -1) {
+            // Remove the technique from the array
+            existingData.splice(index, 1);
+
+            // Save the updated data back to the file
+            fs.writeFileSync(TECHNIQUES_FILE_PATH, JSON.stringify(existingData, null, 2), 'utf-8');
+
+            res.json({ message: 'Technique deleted successfully' });
+        } else {
+            res.status(404).json({ error: 'Technique not found' });
+        }
+    } catch (error) {
+        console.error('Error during DELETE request:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});

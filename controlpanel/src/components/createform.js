@@ -9,10 +9,9 @@ const CreateForm = () => {
     prompt: '',
     script: '',
     description: '',
-    extras: [],
+    extra: [],
   });
 
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -23,15 +22,14 @@ const CreateForm = () => {
   };
 
   const handleSubmit = async (e) => {
-    setFormSubmitted(true)
-    e.preventDefault();
+    
 
     const newTechnique = {
         name: formData.name,
         prompt: formData.prompt,
         script: formData.script,
         description: formData.description,
-        extras: [...formData.extras],
+        extra: [...formData.extra],
       };
 
       try {
@@ -64,7 +62,7 @@ const CreateForm = () => {
     e.preventDefault();
     setFormData((prevData) => ({
         ...prevData,
-        extras: [...prevData.extras, ''], 
+        extra: [...prevData.extra, ''], 
     }));
 };
 
@@ -116,7 +114,7 @@ const CreateForm = () => {
             />
         </div>
 
-      {formData.extras.map((extra, index) => (
+      {formData.extra.map((extra, index) => (
         <div key={index} className='form-item'>
           <label>Extra</label>
           <input
@@ -124,11 +122,11 @@ const CreateForm = () => {
             name={`extra-${index}`}
             value={extra}
             onChange={(e) => {
-              const newExtras = [...formData.extras];
-              newExtras[index] = e.target.value;
+              const newExtra = [...formData.extra];
+              newExtra[index] = e.target.value;
               setFormData((prevData) => ({
                 ...prevData,
-                extras: newExtras,
+                extra: newExtra,
               }));
             }}
           />

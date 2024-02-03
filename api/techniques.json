@@ -7,46 +7,21 @@
     "extra": []
   },
   {
-    "name": "Technique 2",
-    "prompt": "Prompt 2",
-    "script": "script2.py",
-    "description": "test desc",
-    "extra": []
-  },
-  {
-    "name": "Technique 3",
-    "description": "test desc",
-    "prompt": "Prompt 3",
-    "script": "script3.py",
-    "extra": []
-  },
-  {
-    "name": "test",
-    "prompt": "test prompt",
-    "script": "testscript",
-    "description": "test desc",
-    "extras": []
-  },
-  {
     "name": "phue lights",
+    "desc": "turns lights on voice",
     "prompt": "turn lights on",
     "script": "hue_lights.py",
-    "description": "turns lights on voice",
-    "extras": [
-      "ip",
-      "state",
-      "hex"
+    "extra": [
+      "192.168.2.42",
+      "off",
+      "#FFFFFF"
     ]
   },
   {
-    "name": "",
-    "prompt": "",
-    "script": "",
-    "description": "",
-    "extras": [
-      "",
-      "",
-      ""
-    ]
+    "name": "Test",
+    "desc": "CHANGED",
+    "prompt": "CHAGNEF",
+    "script": "test",
+    "extra": []
   }
 ]

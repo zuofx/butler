@@ -49,6 +49,19 @@ const Techniques = ({name, desc, prompt, script, extra}) => {
         });
     }
 
+    function handleDelete(name) {
+        console.log("hello", name)
+        fetch(`http://localhost:3002/api/techniques/delete/${name}`, {
+            method: 'DELETE',
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            window.location.reload()
+        })   
+        .catch(error => console.error('Error:', error));
+    }
+
 
     
 
@@ -66,7 +79,8 @@ const Techniques = ({name, desc, prompt, script, extra}) => {
     
                 <div className = 'techniques-right'>
                     <a className="tr-edit" onClick={handleEdit}>EDIT</a>
-                    <a className="tr-del">DELETE</a>
+                    <a className="tr-del" onClick={() => handleDelete(name)}>DELETE</a>
+
                 </div>
     
             </div>
@@ -85,7 +99,8 @@ const Techniques = ({name, desc, prompt, script, extra}) => {
 
                     <div className = 'techniques-right'>
                         <a className="tr-edit" onClick={handleEdit}>EDIT</a>
-                        <a className="tr-del">DELETE</a>
+                        <a className="tr-del" onClick={() => handleDelete(name)}>DELETE</a>
+
                     </div>
 
                     
