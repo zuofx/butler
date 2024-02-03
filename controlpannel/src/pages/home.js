@@ -1,7 +1,15 @@
+import '../css/home.css';
+
+import Techniques from '../components/techniques.js'
+
 const Home = () => {
+
+    
+
     return(
-        <div>
+        <div className = 'main'>
             <h1>HOME</h1>
+            <Techniques/>
         </div>
     )
 }

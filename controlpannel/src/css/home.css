@@ -1,0 +1,8 @@
+.main{
+    display: flex;
+    background-color: grey;
+    height: 100vh;
+    margin-left: 10vw;
+    margin-right: 10vw;
+}
+

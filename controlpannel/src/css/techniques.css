@@ -1,0 +1,11 @@
+.techniques-container {
+    display: flex;
+    margin-top: 10vh;
+}
+
+.technique{
+    display: flex;
+    flex-direction: row;
+    background-color: white;
+    border: 2px solid black ;
+}
