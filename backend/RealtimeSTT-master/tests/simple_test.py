@@ -25,28 +25,27 @@ for item in jsonData:
     # Use the 'name' value as the key and the 'prompt' value as the value for each dictionary entry
     name_prompt_dict[item['name']] = item['prompt']
 
-# Print the resulting dictionary to verify the results
-print(name_prompt_dict)
 
 
-# runTime = True
-# # variable to keep track of when the while loop is to be stopped
+runTime = True
+# variable to keep track of when the while loop is to be stopped
 
-# if __name__ == '__main__':
-#     recorder = AudioToTextRecorder(spinner=False, model="tiny.en", language="en")
+if __name__ == '__main__':
+    recorder = AudioToTextRecorder(spinner=False, model="tiny.en", language="en")
 
-#     print("Say something...")
-#     # prompt for the user
-#     while (runTime): 
-#         wordList.append(recorder.text())
-#         # adding new sentences to the wordList to keep track of 
+    print("Say something...")
+    # prompt for the user
 
-#         if(prompt1 in wordList[-1]):
-#             print("Prompt 1 was said")
+    while (runTime): 
+        wordList.append(recorder.text())
+        # adding new sentences to the wordList to keep track of 
 
-#             exec(open("C:\\Users\\Xi Chen\\Documents\\GitHub\\QHACKS24\\backend\\scripts\\script1.py").read(), globals())
+        if(prompt1 in wordList[-1]):
+            print("Prompt 1 was said")
 
-#     print("You said: ", wordList)   
+            exec(open("C:\\Users\\Xi Chen\\Documents\\GitHub\\QHACKS24\\backend\\scripts\\script1.py").read(), globals())
+
+    print("You said: ", wordList)   
 
 
 
