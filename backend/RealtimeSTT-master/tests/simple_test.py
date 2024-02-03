@@ -1,6 +1,4 @@
 from RealtimeSTT import AudioToTextRecorder
-import sys
-
 wordList = []
 
 runTime = True
