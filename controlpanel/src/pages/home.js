@@ -1,13 +1,32 @@
 import '../css/home.css';
 
 import Techniques from '../components/techniques.js'
+import { useState } from 'react';
 
 const Home = () => {
 
-    const techniquesList = [
-        { name: 'Technique 1', description: 'Description 1', prompt: 'Prompt 1' },
-        { name: 'Technique 2', description: 'Description 2', prompt: 'Prompt 2' },
-    ];
+    const [techniques, setTechniques] = useState([]);
+
+    const getTechniques=()=>{
+        fetch('/data/techniques.json'
+        ,{
+          headers : { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+           }
+        }
+        )
+          .then(function(response){
+            console.log(response)
+            return response.json();
+          })
+    
+          .then(function(myJson) {
+            console.log(myJson);
+            setTechniques(myJson);
+          });
+      }
+    getTechniques();
 
     return(
         <div className='Home'>
@@ -18,7 +37,7 @@ const Home = () => {
                 </div>
 
                 <div className = 'techniques-container'>
-                    {techniquesList.map((technique) => {
+                    {techniques.map((technique) => {
                         return(
                             <Techniques
                                 name={technique.name}

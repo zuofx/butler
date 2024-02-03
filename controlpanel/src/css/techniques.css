@@ -131,7 +131,7 @@
 
 .edit-holder {
     width: 60vw;
-    height: 18vw;
+    height: 22  vw;
 
     margin: 0;
 
@@ -167,9 +167,10 @@
     width: 80%;
 
     border-style: none;
+    border-radius: 0.3vw;
+
     height: 1.5vw;
     padding-left: 0.5vw;
-
 }
 
 .name-edit-holder {
@@ -188,7 +189,38 @@
     width: 80%;
 
     border-style: none;
+    border-radius: 0.3vw;
+
     height: 1.5vw;
     padding-left: 0.5vw;
+}
 
+.edit-save {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    align-self: flex-end;
+
+    background-color: #3FF25C;
+    color: #E1E2EF;
+
+    margin-right: 1vw;
+    margin-bottom: 1vw;
+    margin-top: 2vw;
+
+    width: 8vw;
+    height: 3vw;
+
+    border-radius: 42px;
+
+    font-weight: 600;
+    font-size: 1.6vw;
+    padding-bottom: 0.2vw;
+
+    transition: 200ms ease;
+}
+.edit-save:hover {
+    transition: 300ms ease;
+    background-color: #269438;
+    color: #9fa0aa;
 }
