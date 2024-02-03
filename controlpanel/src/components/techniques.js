@@ -10,6 +10,35 @@ const Techniques = ({name, desc, prompt, script, extra}) => {
         else setEditState(0);
     }
 
+    function handleSave(name, desc, prompt, script, extra){
+
+        const data = {
+            name: name,
+            desc: desc,
+            prompt: prompt,
+            script: script,
+            extra: extra
+        }
+
+        fetch('http://localhost:3000/api/techniques/get', {
+            method: 'POST', 
+            headers: {'Content-Type': 'application/json',},
+            body: JSON.stringify(data),
+        })
+        .then(response => {
+            if (!response.ok) {
+            throw new Error('Network response was not ok');
+            }
+            return response.json(); 
+        })
+        .then(data => {
+            console.log('Data sent successfully:', data);
+        })
+        .catch(error => {
+            console.error('Error during fetch:', error);
+        });
+    }
+
     if (editState == 0) {
         return(
 
@@ -95,7 +124,8 @@ const Techniques = ({name, desc, prompt, script, extra}) => {
                     )}
                     
 
-                    <a className="edit-save">SAVE</a>
+                    <a onClick = {handleSave} className="edit-save">SAVE</a>
+
                     
                 </div>
             </div>
