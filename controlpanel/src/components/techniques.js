@@ -5,23 +5,32 @@ const Techniques = ({name, desc, prompt, script, extra}) => {
 
     const [editState, setEditState] = useState(0)
 
+    const [descEdited, setDescEdited] = useState(desc);
+    const [promptEdited, setPromptEdited] = useState(prompt);
+    const [extraEdited, setExtraEdited] = useState(extra ? extra.map(() => '') : []);
+
+
     function handleEdit() {
         if (editState == 0) setEditState(1);
         else setEditState(0);
     }
 
-    function handleSave(name, desc, prompt, script, extra){
+
+    function handleEditSave(editedDesc, editedPrompt, script, editedExtra){
+
 
         const data = {
             name: name,
-            desc: desc,
-            prompt: prompt,
-            script: script,
-            extra: extra
-        }
+            desc: editedDesc,
+            prompt: editedPrompt,
+            script: script, 
+            extra: editedExtra,
+          };
 
-        fetch('http://localhost:3000/api/techniques/get', {
-            method: 'POST', 
+        console.log(data)
+
+        fetch('http://localhost:3002/api/techniques/put', {
+            method: 'PUT', 
             headers: {'Content-Type': 'application/json',},
             body: JSON.stringify(data),
         })
@@ -33,11 +42,28 @@ const Techniques = ({name, desc, prompt, script, extra}) => {
         })
         .then(data => {
             console.log('Data sent successfully:', data);
+            setEditState(0);
         })
         .catch(error => {
             console.error('Error during fetch:', error);
         });
     }
+
+    function handleDelete(name) {
+        console.log("hello", name)
+        fetch(`http://localhost:3002/api/techniques/delete/${name}`, {
+            method: 'DELETE',
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            window.location.reload()
+        })   
+        .catch(error => console.error('Error:', error));
+    }
+
+
+    
 
     if (editState == 0) {
         return(
@@ -53,7 +79,8 @@ const Techniques = ({name, desc, prompt, script, extra}) => {
     
                 <div className = 'techniques-right'>
                     <a className="tr-edit" onClick={handleEdit}>EDIT</a>
-                    <a className="tr-del">DELETE</a>
+                    <a className="tr-del" onClick={() => handleDelete(name)}>DELETE</a>
+
                 </div>
     
             </div>
@@ -72,7 +99,8 @@ const Techniques = ({name, desc, prompt, script, extra}) => {
 
                     <div className = 'techniques-right'>
                         <a className="tr-edit" onClick={handleEdit}>EDIT</a>
-                        <a className="tr-del">DELETE</a>
+                        <a className="tr-del" onClick={() => handleDelete(name)}>DELETE</a>
+
                     </div>
 
                     
@@ -85,25 +113,31 @@ const Techniques = ({name, desc, prompt, script, extra}) => {
                         <input 
                             className="desc-input"
                             type="text"
+                            value = {descEdited}
                             placeholder="Enter your description"
+                            onChange = {(e) => setDescEdited(e.target.value)}
                         />
                     </div>
 
-                    <div className="name-edit-holder">
+                    {/* <div className="name-edit-holder">
                         <div className="name-title">Name:</div>
                         <input 
                             className="name-input"
                             type="text"
+                            value = {nameEdited}
                             placeholder="Enter your description"
+                            onChange = {(e) => setNameEdited(e.target.value)}
                         />
-                    </div>
+                    </div> */}
 
                     <div className="name-edit-holder">
                         <div className="name-title">Prompt:</div>
                         <input 
                             className="name-input"
                             type="text"
+                            value = {promptEdited}
                             placeholder="Enter your description"
+                            onChange = {(e) => setPromptEdited(e.target.value)}
                         />
                     </div>
 
@@ -111,20 +145,26 @@ const Techniques = ({name, desc, prompt, script, extra}) => {
                     {extra.length > 0 && (
                         <div className="name-edit-holder">
                             {extra.map((item, index) => (
-                                <>
+                                <div key={index}>
                                     <div className="name-title">{item}</div>
-                                    <input 
+                                    <input
                                         className="name-input"
                                         type="text"
+                                        value={extraEdited[index]}
                                         placeholder={`Enter ${item}`}
+                                        onChange={(e) => {
+                                            const updatedExtra = [...extraEdited];
+                                            updatedExtra[index] = e.target.value;
+                                            setExtraEdited(updatedExtra);
+                                        }}
                                     />
-                                </>
+                                </div>
                             ))}
                         </div>
                     )}
                     
 
-                    <a onClick = {handleSave} className="edit-save">SAVE</a>
+                    <a onClick={() => handleEditSave(descEdited, promptEdited, script, extraEdited)} className="edit-save">SAVE</a>
 
                     
                 </div>

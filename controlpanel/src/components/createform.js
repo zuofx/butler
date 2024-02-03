@@ -9,27 +9,27 @@ const CreateForm = () => {
     prompt: '',
     script: '',
     description: '',
-    extras: [],
+    extra: [],
   });
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prevData) => ({
+      ...prevData,
       [name]: value,
-    });
-    console.log(formData.extras)
+    }));
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    
 
     const newTechnique = {
         name: formData.name,
         prompt: formData.prompt,
         script: formData.script,
         description: formData.description,
-        extras: [...formData.extras],
+        extra: [...formData.extra],
       };
 
       try {
@@ -58,17 +58,22 @@ const CreateForm = () => {
     console.log('Form data submitted:', newTechnique);
   };
 
-  const handleAddInput = () => {
+  const handleAddInput = (e) => {
+    e.preventDefault();
     setFormData((prevData) => ({
-      ...prevData,
-      extras: [...prevData.extras, ''], 
+        ...prevData,
+        extra: [...prevData.extra, ''], 
     }));
-  };
+};
 
   return (
     <form onSubmit={handleSubmit}>
         <h1>Create Technique</h1>
-        <button onClick = {handleAddInput}>+</button>
+        <button onClick={(e) => {
+            e.preventDefault();
+            handleAddInput(e);
+        }}>+</button>
+
         <div className = 'form-item'>
             <label>Name</label>
             <input
@@ -109,7 +114,7 @@ const CreateForm = () => {
             />
         </div>
 
-      {formData.extras.map((extra, index) => (
+      {formData.extra.map((extra, index) => (
         <div key={index} className='form-item'>
           <label>Extra</label>
           <input
@@ -117,11 +122,11 @@ const CreateForm = () => {
             name={`extra-${index}`}
             value={extra}
             onChange={(e) => {
-              const newExtras = [...formData.extras];
-              newExtras[index] = e.target.value;
+              const newExtra = [...formData.extra];
+              newExtra[index] = e.target.value;
               setFormData((prevData) => ({
                 ...prevData,
-                extras: newExtras,
+                extra: newExtra,
               }));
             }}
           />

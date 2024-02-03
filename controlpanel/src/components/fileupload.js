@@ -1,24 +1,47 @@
 import React from 'react';
+import { useState } from 'react';
 
 const FileUpload = () => {
-  const handleFileChange = async (event) => {
-    try {
-      const directoryHandle = await window.showDirectoryPicker()
-      const fileHandle = await directoryHandle.getFileHandle('example.txt', { create: true })
-      const writable = await fileHandle.createWritable()
 
-      await writable.write(event.target.files[0])
-      await writable.close()
-    } catch (error) {
-      console.error('Error saving file:', error);
+    const [file, setFile ] = useState()
+
+    const handleFileChange = async (event) => {
+        setFile(event.target.files[0])
+    };
+
+    const formData = new FormData()
+    formData.append('file', file)
+
+    const handleFileUpload = (e) => {
+        e.preventDefault()
+
+        fetch('http://localhost:3002/api/scripts/post', {
+            method: 'POST', 
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); 
+        })
+        .then(data => {
+            console.log('File Uploaded:', data);
+        })
+        .catch(error => {
+            console.error('Error during fetch:', error);
+        });
     }
-  };
 
-  return (
-    <div>
-      <input type="file" onChange={handleFileChange} />
-    </div>
-  );
+    return (
+        <div>
+            <form onSubmit = {handleFileUpload}>
+                <input type="file" onChange={handleFileChange} />
+                <button type="submit">Upload</button>
+            </form>
+            
+        </div>
+    );
 };
 
 export default FileUpload
