@@ -75,6 +75,8 @@ const Techniques = ({name, desc, prompt}) => {
                             placeholder="Enter your description"
                         />
                     </div>
+
+                    <a className="edit-save">SAVE</a>
                     
                 </div>
             </div>

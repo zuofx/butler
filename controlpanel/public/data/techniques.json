@@ -1,0 +1,17 @@
+[
+    {
+        "name":"Technique 1",
+        "description":"Description 1",
+        "prompt":"Prompt 1"
+    },
+    {
+        "name":"Technique 2",
+        "description":"Description 2",
+        "prompt":"Prompt 2"
+    },
+    {
+        "name":"Technique 3",
+        "description":"Description 3",
+        "prompt":"Prompt 3"
+    }
+]
