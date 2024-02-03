@@ -12,9 +12,21 @@ prompt1 = "Test 1."
 f = open("C:\\Users\\Xi Chen\\Documents\\GitHub\\QHACKS24\\controlpanel\\public\\data\\techniques.json")
 
 data = json.load(f)
+jsonData = []
 
 for i in data:
-    print(i)
+    jsonData.append(i)
+
+# Initialize an empty dictionary to hold the name and prompt pairs
+name_prompt_dict = {}
+
+# Iterate through each item in the json_data list
+for item in jsonData:
+    # Use the 'name' value as the key and the 'prompt' value as the value for each dictionary entry
+    name_prompt_dict[item['name']] = item['prompt']
+
+# Print the resulting dictionary to verify the results
+print(name_prompt_dict)
 
 
 # runTime = True
