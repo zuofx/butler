@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../css/techniques.css';
 
-const Techniques = ({name, desc, prompt}) => {
+const Techniques = ({name, desc, prompt, script, extra}) => {
 
     const [editState, setEditState] = useState(0)
 
@@ -19,6 +19,7 @@ const Techniques = ({name, desc, prompt}) => {
                     <div className="tl-name">{name}</div>
                     <div className="tl-desc"><span>Description:</span> {desc}</div>
                     <div className="tl-prompt"><span>Prompt:</span> "{prompt}"</div>
+                    <div className="tl-prompt"><span>Script</span> "{script}"</div>
                 </div>
     
                 <div className = 'techniques-right'>
@@ -75,6 +76,23 @@ const Techniques = ({name, desc, prompt}) => {
                             placeholder="Enter your description"
                         />
                     </div>
+
+                    
+                    {extra.length > 0 && (
+                        <div className="name-edit-holder">
+                            {extra.map((item, index) => (
+                                <div key={index} className="tl-extra-item">
+                                    <div className="name-title">{item}</div>
+                                    <input 
+                                        className="name-input"
+                                        type="text"
+                                        placeholder={`Enter ${item}`}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                    
 
                     <a className="edit-save">SAVE</a>
                     

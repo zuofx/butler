@@ -43,6 +43,8 @@ const Home = () => {
                                 name={technique.name}
                                 desc={technique.description}
                                 prompt={technique.prompt}
+                                script = {technique.script}
+                                extra = {technique.extra}
                             />
                         )
                     })}
