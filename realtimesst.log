@@ -1,0 +1,60 @@
+RealTimeSTT: root - INFO - Starting RealTimeSTT
+RealTimeSTT: root - DEBUG - Porcupine wake word detection engine initialized successfully
+RealTimeSTT: root - INFO - Initializing WebRTC voice with Sensitivity 3
+RealTimeSTT: root - DEBUG - WebRTC VAD voice activity detection engine initialized successfully
+RealTimeSTT: torchaudio._extension.utils - DEBUG - Attempting to load FFmpeg version 6.
+RealTimeSTT: torchaudio._extension.utils - DEBUG - Failed to load FFmpeg 6 extension.
+Traceback (most recent call last):
+  File "C:\Users\Xi Chen\AppData\Local\Programs\Python\Python39\lib\site-packages\torchaudio\_extension\utils.py", line 128, in _find_ffmpeg_extension
+    return _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+  File "C:\Users\Xi Chen\AppData\Local\Programs\Python\Python39\lib\site-packages\torchaudio\_extension\utils.py", line 113, in _find_versionsed_ffmpeg_extension
+    _try_access_avutil(ffmpeg_ver)
+  File "C:\Users\Xi Chen\AppData\Local\Programs\Python\Python39\lib\site-packages\torchaudio\_extension\utils.py", line 89, in _try_access_avutil
+    torchaudio.lib._torchaudio.find_avutil(libavutil)
+RuntimeError: error in LoadLibrary for avutil-58.dll. WinError 126: The specified module could not be found.
+
+RealTimeSTT: torchaudio._extension.utils - DEBUG - Attempting to load FFmpeg version 5.
+RealTimeSTT: torchaudio._extension.utils - DEBUG - Failed to load FFmpeg 5 extension.
+Traceback (most recent call last):
+  File "C:\Users\Xi Chen\AppData\Local\Programs\Python\Python39\lib\site-packages\torchaudio\_extension\utils.py", line 128, in _find_ffmpeg_extension
+    return _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+  File "C:\Users\Xi Chen\AppData\Local\Programs\Python\Python39\lib\site-packages\torchaudio\_extension\utils.py", line 113, in _find_versionsed_ffmpeg_extension
+    _try_access_avutil(ffmpeg_ver)
+  File "C:\Users\Xi Chen\AppData\Local\Programs\Python\Python39\lib\site-packages\torchaudio\_extension\utils.py", line 89, in _try_access_avutil
+    torchaudio.lib._torchaudio.find_avutil(libavutil)
+RuntimeError: error in LoadLibrary for avutil-57.dll. WinError 126: The specified module could not be found.
+
+RealTimeSTT: torchaudio._extension.utils - DEBUG - Attempting to load FFmpeg version 4.
+RealTimeSTT: torchaudio._extension.utils - DEBUG - Failed to load FFmpeg 4 extension.
+Traceback (most recent call last):
+  File "C:\Users\Xi Chen\AppData\Local\Programs\Python\Python39\lib\site-packages\torchaudio\_extension\utils.py", line 128, in _find_ffmpeg_extension
+    return _find_versionsed_ffmpeg_extension(ffmpeg_ver)
+  File "C:\Users\Xi Chen\AppData\Local\Programs\Python\Python39\lib\site-packages\torchaudio\_extension\utils.py", line 113, in _find_versionsed_ffmpeg_extension
+    _try_access_avutil(ffmpeg_ver)
+  File "C:\Users\Xi Chen\AppData\Local\Programs\Python\Python39\lib\site-packages\torchaudio\_extension\utils.py", line 89, in _try_access_avutil
+    torchaudio.lib._torchaudio.find_avutil(libavutil)
+RuntimeError: error in LoadLibrary for avutil-56.dll. WinError 126: The specified module could not be found.
+
+RealTimeSTT: torchaudio._extension - DEBUG - Failed to initialize ffmpeg bindings
+Traceback (most recent call last):
+  File "C:\Users\Xi Chen\AppData\Local\Programs\Python\Python39\lib\site-packages\torchaudio\_extension\__init__.py", line 89, in <module>
+    _FFMPEG_EXT = _init_ffmpeg()
+  File "C:\Users\Xi Chen\AppData\Local\Programs\Python\Python39\lib\site-packages\torchaudio\_extension\utils.py", line 162, in _init_ffmpeg
+    ext = _find_ffmpeg_extension(ffmpeg_vers, show_error)
+  File "C:\Users\Xi Chen\AppData\Local\Programs\Python\Python39\lib\site-packages\torchaudio\_extension\utils.py", line 132, in _find_ffmpeg_extension
+    raise ImportError(f"Failed to intialize FFmpeg extension. Tried versions: {ffmpeg_vers}")
+ImportError: Failed to intialize FFmpeg extension. Tried versions: ['6', '5', '4']
+RealTimeSTT: root - DEBUG - Silero VAD voice activity detection engine initialized successfully
+RealTimeSTT: root - DEBUG - Starting recording worker
+RealTimeSTT: root - DEBUG - Starting realtime worker
+RealTimeSTT: root - DEBUG - Waiting for main transcription model to start
+RealTimeSTT: root - DEBUG - Main transcription model ready
+RealTimeSTT: root - DEBUG - RealtimeSTT initialization completed successfully
+RealTimeSTT: root - INFO - voice activity detected
+RealTimeSTT: root - INFO - recording started
+RealTimeSTT: root - INFO - voice deactivity detected
+RealTimeSTT: root - INFO - recording stopped
+RealTimeSTT: root - DEBUG - Finishing recording thread
+RealTimeSTT: root - DEBUG - Terminating reader process
+RealTimeSTT: root - DEBUG - Terminating transcription process
+RealTimeSTT: root - DEBUG - Finishing realtime thread
