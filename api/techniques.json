@@ -1,0 +1,34 @@
+[
+  {
+    "name": "Technique 1",
+    "description": "Description 1",
+    "prompt": "Prompt 1",
+    "script": "script1.py",
+    "extra": [
+      "ip address",
+      "state",
+      "hexcode"
+    ]
+  },
+  {
+    "name": "Technique 2",
+    "description": "Description 2",
+    "prompt": "Prompt 2",
+    "script": "script2.py",
+    "extra": []
+  },
+  {
+    "name": "Technique 3",
+    "description": "Description 3",
+    "prompt": "Prompt 3",
+    "script": "script3.py",
+    "extra": []
+  },
+  {
+    "name": "test",
+    "prompt": "test prompt",
+    "script": "testscript",
+    "description": "testdesc",
+    "extras": []
+  }
+]

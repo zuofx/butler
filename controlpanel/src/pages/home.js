@@ -1,32 +1,47 @@
 import '../css/home.css';
 
 import Techniques from '../components/techniques.js'
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Home = () => {
 
     const [techniques, setTechniques] = useState([]);
 
-    const getTechniques=()=>{
-        fetch('/data/techniques.json'
-        ,{
-          headers : { 
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-           }
-        }
-        )
-          .then(function(response){
-            console.log(response)
-            return response.json();
-          })
+    // const getTechniques=()=>{
+    //     fetch('/data/techniques.json'
+    //     ,{
+    //       headers : { 
+    //         'Content-Type': 'application/json',
+    //         'Accept': 'application/json'
+    //        }
+    //     }
+    //     )
+    //       .then(function(response){
+    //         console.log(response)
+    //         return response.json();
+    //       })
     
-          .then(function(myJson) {
-            console.log(myJson);
-            setTechniques(myJson);
-          });
-      }
-    getTechniques();
+    //       .then(function(myJson) {
+    //         console.log(myJson);
+    //         setTechniques(myJson);
+    //       });
+    //   }
+    // getTechniques();
+
+    useEffect(() => {
+        const handleTechniques = async () => {
+            try {
+                const response = await fetch('http://localhost:3002/api/techniques/get');
+                const data = await response.json();
+                console.log(data)
+                setTechniques(data);
+            } catch (error) {
+                console.error('Error fetching techniques:', error);
+            }
+        }
+      
+        handleTechniques();
+      }, []);
 
     return(
         <div className='Home'>
@@ -40,6 +55,7 @@ const Home = () => {
                     {techniques.map((technique) => {
                         return(
                             <Techniques
+                                key = {technique.name}
                                 name={technique.name}
                                 desc={technique.description}
                                 prompt={technique.prompt}

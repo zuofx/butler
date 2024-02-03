@@ -21,7 +21,7 @@ const CreateForm = () => {
     console.log(formData.extras)
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const newTechnique = {
@@ -32,8 +32,28 @@ const CreateForm = () => {
         extras: [...formData.extras],
       };
 
-      //NEXT: figure out how to write json to techniques.json
-    // writeJsonFile("/data/techniques.json", newTechnique)
+      try {
+        const response = await fetch('http://localhost:3002/api/techniques/post', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newTechnique),
+        });
+    
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+    
+        const responseData = await response.json();
+        console.log('Data sent successfully:', responseData);
+      } catch (error) {
+        console.error('Error during fetch:', error);
+      }
+
+    
+
+      
     
     console.log('Form data submitted:', newTechnique);
   };
