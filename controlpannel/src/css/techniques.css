@@ -1,11 +1,32 @@
-.techniques-container {
-    display: flex;
-    margin-top: 10vh;
-}
-
 .technique{
     display: flex;
     flex-direction: row;
     background-color: white;
-    border: 2px solid black ;
+    
+    border-radius: 42px;
+
+    width: 40vw;
+    height: 10vw;
+}
+
+.techniques-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    margin: 30px;
+
+    flex: 1;
+}
+
+.techniques-right {
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+.tr-edit {
+    background-color: #05204A;
+    width: 8vw;
+    height: 2vw;
 }

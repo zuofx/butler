@@ -10,12 +10,15 @@ import {
 //Route Imports
 import Home from './pages/home'
 import Create from './pages/create'
+import Header from './components/header.js'
 
 
 
 function App() {
   return (
     <div className="App">
+      <Header/>
+
       <Router>
         <Routes>
           <Route exact path="/" element={<Home />} />

@@ -1,8 +1,56 @@
-.main{
-    display: flex;
-    background-color: grey;
-    height: 100vh;
-    margin-left: 10vw;
-    margin-right: 10vw;
+.Home{
+    margin: 0 auto;
 }
 
+.technique-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+
+    width: 70vw;
+}
+
+.tech-title-container {
+    display: flex;
+    flex-direction: row;
+}
+.tech-title {
+    color: #E1E2EF;
+    text-align: left;
+
+    color: #E1E2EF;
+
+    font-size: 2vw;
+    font-weight: 700;
+
+
+    flex: 1;
+}
+.create-tech {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    
+    width: 18%;
+    height: 40px;
+    
+    margin: auto auto;
+
+    font-size: 1vw;
+    font-weight: 700;
+
+    color: #E1E2EF;
+    background-color: #B497D6;
+    border-radius: 42px;
+    transition: 200ms ease;
+}
+.create-tech h1 {
+    
+    font-size: 1vw;
+    padding-bottom: 4px;
+}
+.create-tech:hover {
+    background-color: #05204A;
+    color: #B497D6;
+    transition: 300ms ease;
+}
