@@ -20,7 +20,8 @@ if __name__ == '__main__':
         if(wordList[-1].__contains__("Stop.")):
             # Test the if statement, to see if the 
             # If you add the code to a list, and check the last element in the list after you appended it, then the if statements can be used to flag certain phrases
-            # Although since the function rec
+            # Although since the function recorder.text() is giving you a string of the sentence, you can use the string functions to check for certain phrases
+            # So instead of just the last element in the wordList, we can just use the recorder.text() for some better efficiency
             """
             Future Testing:
             
