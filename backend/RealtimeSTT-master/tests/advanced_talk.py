@@ -11,7 +11,7 @@ if __name__ == '__main__':
     print("Initializing")
     print()
 
-    openai.api_key = os.environ.get("OPENAI_API_KEY")
+    openai.api_key = openai(api_key="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")
     azure_speech_key = os.environ.get("AZURE_SPEECH_KEY")
     azure_speech_region = os.environ.get("AZURE_SPEECH_REGION")
     elevenlabs_api_key = os.environ.get("ELEVENLABS_API_KEY")
