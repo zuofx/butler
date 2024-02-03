@@ -1,0 +1,26 @@
+.color-picker {
+    display: flex;
+    justify-content: center;
+
+}
+
+.all-sliders{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    max-width: fit-content;
+    padding: 10px;
+
+}
+
+.slider-container {
+    display: flex;
+    flex-direction: column;
+    margin-left: -2vh;
+    margin-right: -2vh;
+}
+  
+input[type="range"] {
+    appearance: slider-vertical;
+}
