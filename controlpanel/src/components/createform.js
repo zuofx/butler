@@ -12,16 +12,18 @@ const CreateForm = () => {
     extras: [],
   });
 
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({
-      ...formData,
+    setFormData((prevData) => ({
+      ...prevData,
       [name]: value,
-    });
-    console.log(formData.extras)
+    }));
   };
 
   const handleSubmit = async (e) => {
+    setFormSubmitted(true)
     e.preventDefault();
 
     const newTechnique = {
@@ -58,17 +60,22 @@ const CreateForm = () => {
     console.log('Form data submitted:', newTechnique);
   };
 
-  const handleAddInput = () => {
+  const handleAddInput = (e) => {
+    e.preventDefault();
     setFormData((prevData) => ({
-      ...prevData,
-      extras: [...prevData.extras, ''], 
+        ...prevData,
+        extras: [...prevData.extras, ''], 
     }));
-  };
+};
 
   return (
     <form onSubmit={handleSubmit}>
         <h1>Create Technique</h1>
-        <button onClick = {handleAddInput}>+</button>
+        <button onClick={(e) => {
+            e.preventDefault();
+            handleAddInput(e);
+        }}>+</button>
+
         <div className = 'form-item'>
             <label>Name</label>
             <input

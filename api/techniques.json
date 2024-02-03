@@ -1,24 +1,21 @@
 [
   {
     "name": "Technique 1",
-    "desc": "xxxxxxx",
-    "prompt": "xxxxxxxxxxx",
+    "description": "test desc",
+    "prompt": "Hello Technique1",
     "script": "script1.py",
-    "extra": [
-      "xxxxxxx",
-      "xxxxxxxx",
-      "xxxxxxxxxx"
-    ]
+    "extra": []
   },
   {
     "name": "Technique 2",
     "prompt": "Prompt 2",
     "script": "script2.py",
+    "description": "test desc",
     "extra": []
   },
   {
     "name": "Technique 3",
-    "desc": "Description 3",
+    "description": "test desc",
     "prompt": "Prompt 3",
     "script": "script3.py",
     "extra": []
@@ -27,7 +24,29 @@
     "name": "test",
     "prompt": "test prompt",
     "script": "testscript",
-    "description": "testdesc",
+    "description": "test desc",
     "extras": []
+  },
+  {
+    "name": "phue lights",
+    "prompt": "turn lights on",
+    "script": "hue_lights.py",
+    "description": "turns lights on voice",
+    "extras": [
+      "ip",
+      "state",
+      "hex"
+    ]
+  },
+  {
+    "name": "",
+    "prompt": "",
+    "script": "",
+    "description": "",
+    "extras": [
+      "",
+      "",
+      ""
+    ]
   }
 ]
