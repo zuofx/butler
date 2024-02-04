@@ -20,37 +20,32 @@ jsonDataPrompt = []
 jsonDataScript = []
 # Used for storing the data from the JSON file for the techniques
 
-jsonCounter = 0
-
-#def JSONUpdate(data):
 for i in data:
     jsonDataName.append(i['name'])
     jsonDataPrompt.append(i['prompt'])
     jsonDataScript.append(i['script'])
-    jsonCounter += 1
-
-print(jsonDataName)
 
 
-# runTime = True
-# #variable to keep track of when the while loop is to be stopped
+runTime = True
+#variable to keep track of when the while loop is to be stopped
 
-# if __name__ == '__main__':
+if __name__ == '__main__':
 
-#     recorder = AudioToTextRecorder(spinner=False, model="tiny.en", language="en")
+    recorder = AudioToTextRecorder(spinner=False, model="tiny.en", language="en")
 
-#     print("Say something...")
-#     # prompt for the user
+    print("Say something...")
+    # prompt for the user
 
-#     while (True): 
-#         # AIresponse(recorder.text())
-#         wordList.append(recorder.text())
-#         print(wordList)
-#         # adding new sentences to the wordList to keep track of 
+    while (runTime): 
+        spoken_text = recorder.text()
 
-#         for i in range(jsonCounter):
-#             print(jsonDataPrompt[i])
-#             if(jsonDataPrompt[i] in recorder.text()):
-#                 print("Prompt {} was excuted, at ".format(jsonDataName[i]) + str(len(wordList)) + "th sentence")
-#                 exec(open(Path(__file__).parent / "./test.json" + jsonDataScript[i]).read(), globals())
+        wordList.append(recorder.text())
+        print(recorder.text())
+        # adding new sentences to the wordList to keep track of         
 
+        for i in range(len(jsonDataPrompt)):  # Use len(jsonDataPrompt) instead of jsonCounter
+            prompt_words = jsonDataPrompt[i].split()  # Assuming jsonDataPrompt[i] is a string with two words
+            if all(word in spoken_text.split() for word in prompt_words):
+                print(f"Prompt {jsonDataName[i]} was executed at the {len(wordList)}th sentence")
+                script_path = Path(__file__).parent / jsonDataScript[i]
+                exec(open(script_path).read(), globals())
