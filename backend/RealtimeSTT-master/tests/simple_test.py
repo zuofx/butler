@@ -38,11 +38,12 @@ if __name__ == '__main__':
     print("Say something...")
     # prompt for the user
 
-    while (runTime): 
-        spoken_text = recorder.text()
+    while (runTime):
 
         wordList.append(recorder.text())
-        print(recorder.text())
+        spoken_text = wordList.pop()
+        print(spoken_text)
+        # print(recorder.text())
         # adding new sentences to the wordList to keep track of         
 
         for i in range(len(jsonDataPrompt)):  # Use len(jsonDataPrompt) instead of jsonCounter
