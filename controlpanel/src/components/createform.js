@@ -18,8 +18,8 @@ const CreateForm = () => {
     }));
   };
 
-  const handleSubmit = async () => {
-    
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
     const newTechnique = {
       name: formData.name,
@@ -99,7 +99,7 @@ const CreateForm = () => {
         </div>
 
         <div className = 'form-item'>
-            <label>desc</label>
+            <label>Description</label>
             <input
                 type = "text"
                 name = "desc"

@@ -1,7 +1,7 @@
 [
   {
     "name": "TEST7",
-    "desc": "dest",
+    "desc": "dest2344",
     "prompt": "hello",
     "script": "hue_lights.py",
     "extra": {
@@ -31,6 +31,20 @@
     "desc": "1231231231231",
     "prompt": "231231231231",
     "script": "xxxxxxxxxxxxxxxxxxxxxxx",
+    "extra": {}
+  },
+  {
+    "name": "tw",
+    "prompt": "wet",
+    "script": "wet",
+    "desc": "wet",
+    "extra": {}
+  },
+  {
+    "name": "waitwait",
+    "prompt": "waitwait",
+    "script": "waitwait",
+    "desc": "waitwait",
     "extra": {}
   }
 ]
