@@ -13,10 +13,14 @@ import Create from './pages/create'
 import Devices from './pages/devices.js'
 import Scripts from './pages/scripts.js'
 import Header from './components/header.js'
+import Login from './Auth/login.js'
 
-
+import Settings from './pages/settings.js'
 
 function App() {
+
+  
+
   return (
     <div className="App">
       <AnimatedCursor
@@ -41,16 +45,18 @@ function App() {
         ]}
       />
       <Header/>
+          <Router>
+            <Routes>
+              <Route exact path="/" element={<Home />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/create" element={<Create />} />
+              <Route path="/scripts" element={<Scripts/>} />
+              <Route path="/settings" element={<Settings/>} />
+              <Route path="/login" element={<Login/>} />
+            </Routes>
+          </Router>
+        
 
-      <Router>
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/create" element={<Create />} />
-          <Route path="/scripts" element={<Scripts />} />
-          <Route path="/devices" element={<Devices />} />
-        </Routes>
-      </Router>
     </div>
   );
 }

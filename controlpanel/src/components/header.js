@@ -7,8 +7,9 @@ const Header = () => {
             <div className="logo"></div>
             <div className="title">CONTROL PANEL | </div>
             <a className="button" href="/home">HOME</a>
-            <a className="button" href="/devices">DEVICES</a>
+            
             <a className="button" href="/scripts">SCRIPTS</a>
+            <a className="button" href="/settings">SETTINGS</a>
 
 
         </div>
