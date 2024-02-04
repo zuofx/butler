@@ -42,6 +42,8 @@ const Techniques = ({ name, desc, prompt, script, extra }) => {
       .catch((error) => {
         console.error('Error during fetch:', error);
       });
+
+    window.location.reload();
   }
 
   function handleDelete(name) {
