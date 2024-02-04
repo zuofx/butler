@@ -3,6 +3,8 @@ const express = require('express');
 const fs = require('fs');
 const cors = require('cors');
 const multer = require('multer');
+const path = require('path');
+
 
 // Create an Express application
 const app = express();
@@ -135,4 +137,17 @@ app.delete("/api/techniques/delete/:name", (req, res) => {
         console.error('Error during DELETE request:', error);
         res.status(500).json({ error: 'Internal server error' });
     }
+});
+
+//Retrieve Active Scripts
+app.get("/api/scripts/get", (req, res) => {
+    const folderPath = path.join(__dirname, '../backend/scripts');
+    fs.readdir(folderPath, (err, files) => {
+        if (err) {
+            console.error('Error reading folder:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+        } else {
+            res.json({ files });
+        }
+    });
 });
