@@ -22,9 +22,7 @@ def speak_text(text):
     
     # Play the audio file
     playsound(audio_file)
-    
-    # Remove the temporary audio file after playing
-    os.remove(audio_file)
+
 
 # Example usage
 speak_text("Hello, this is a test sentence to demonstrate text to speech.")
