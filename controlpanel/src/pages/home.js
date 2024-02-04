@@ -57,7 +57,7 @@ const Home = () => {
                             <Techniques
                                 key = {technique.name}
                                 name={technique.name}
-                                desc={technique.description}
+                                desc={technique.desc}
                                 prompt={technique.prompt}
                                 script = {technique.script}
                                 extra = {technique.extra}

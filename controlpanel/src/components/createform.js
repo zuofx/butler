@@ -6,7 +6,7 @@ const CreateForm = () => {
     name: '',
     prompt: '',
     script: '',
-    description: '',
+    desc: '',
     extra: {},
   });
 
@@ -25,7 +25,7 @@ const CreateForm = () => {
       name: formData.name,
       prompt: formData.prompt,
       script: formData.script,
-      description: formData.description,
+      desc: formData.desc,
       extra: { ...formData.extra },
     };
 
@@ -102,8 +102,8 @@ const CreateForm = () => {
             <label>Description</label>
             <input
                 type = "text"
-                name = "description"
-                value = {formData.description}
+                name = "desc"
+                value = {formData.desc}
                 onChange = {handleChange}
             />
         </div> 
