@@ -1,13 +1,7 @@
-from RealtimeSTT import AudioToTextRecorder
+# from RealtimeSTT import AudioToTextRecorder
 from anyio import open_file
 # library that was used for real-time TTS 
 import json
-import openai
-
-from pathlib import Path
-path = Path(__file__).parent / "../../../api/techniques.json"
-with path.open() as f:
-    data = json.load(f)
 
 wordList = []
 # Storing the sentences that were said to figure out what is being mentioned in real-time
@@ -35,6 +29,15 @@ runTime = True
 # variable to keep track of when the while loop is to be stopped
 
 if __name__ == '__main__':
+
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    print(script_dir)
+
+    # file_path = os.path.join(os.getcwd(), 'test.json')
+    # f = open(file_path)
+    # data = json.load(f)
+    # print(data)
+
     recorder = AudioToTextRecorder(spinner=False, model="tiny.en", language="en")
 
     print("Say something...")
@@ -42,12 +45,12 @@ if __name__ == '__main__':
 
     while (runTime): 
         wordList.append(recorder.text())
-        # adding new sentences to the wordList to keep track of what is being said
+        # adding new sentences to the wordList to keep track of 
 
-        for i in range(jsonCounter):
-            if(i in wordList[-1]):
-                exec(open("C:\\Users\\Xi Chen\\Documents\\GitHub\\QHACKS24\\backend\\scripts\\" + jsonDataScript[i]).read(), globals())  
-                print("You exucuted the script.")
+        if(prompt1 in wordList[-1]):
+            print("Prompt 1 was said")
+
+            exec(open("C:\\Users\\Xi Chen\\Documents\\GitHub\\QHACKS24\\backend\\scripts\\script1.py").read(), globals())
 
     print("You said: ", wordList)   
 

@@ -1,0 +1,21 @@
+[
+    {
+      "name": "Device 1",
+      "type": "Philips Hue Light",
+      "prompt": "Prompt 1",
+      "extra": [
+        "ip address",
+        "state",
+        "hexcode"
+      ]
+    },
+    {
+      "name": "Technique 2",
+      "type": "WoL Computer",
+      "prompt": "Prompt 2",
+      "extra": [
+        "MAC Address:",
+        "IPV4:"
+      ]
+    }
+  ]
