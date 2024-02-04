@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import '../css/scripts.css'
 
 const FileUpload = () => {
 
@@ -35,9 +36,9 @@ const FileUpload = () => {
 
     return (
         <div>
-            <form onSubmit = {handleFileUpload}>
-                <input type="file" onChange={handleFileChange} />
-                <button type="submit">Upload</button>
+            <form className="script-form" onSubmit = {handleFileUpload}>
+                <input className="script-input" type="file" onChange={handleFileChange} />
+                <button className="script-upload" type="submit">UPLOAD</button>
             </form>
             
         </div>

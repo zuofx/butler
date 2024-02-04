@@ -8,7 +8,7 @@ export const AuthProvider = ({children}) => {
     //this code check if the value for "isLoggedIn" === "true"
     //i have to use quotes around true because sessionStorage only stores strings
     return {
-      email: null,
+      username: null,
       password: null,
       isAuthenticated: isLoggedIn
     }
@@ -16,15 +16,21 @@ export const AuthProvider = ({children}) => {
     
 
 
-  const login = (email, password) => {
-    setAuthData({email, password, isAuthenticated: true})
-    sessionStorage.setItem("isLoggedIn", "true")
+  const login = (username, password) => {
+    setAuthData((prevAuthData) => ({
+      ...prevAuthData,
+      username,
+      password,
+      isAuthenticated: true
+    }));
+    sessionStorage.setItem("isLoggedIn", "true");
     //when the login function is used creates an item in the local storage
     //that looks like this "isLoggedIn": "true"
   }
+  
 
   const logout = () => {
-    setAuthData({email: null, password: null, isAuthenticated: false})
+    setAuthData({username: null, password: null, isAuthenticated: false})
     sessionStorage.removeItem("isLoggedIn")
   }
 

@@ -1,0 +1,45 @@
+
+
+.scripts-container{
+    width: 60vw;
+
+    margin: 0 auto;
+    border-radius: 2.3vw;
+
+    background-color: #E1E2EF;
+
+    padding: 3vw;
+}
+.scripts-container h1 {
+    
+    color: #030f24;
+
+}
+.script-item {
+    color: #030f24;
+}
+.script-form {
+    margin: 0 auto;
+    background-color: #E1E2EF;
+}
+.script-upload {
+    border-style: none;
+    
+    margin: 0 auto;
+    margin-top: 1vw;
+    border-radius: 1vw;
+    height: 3vw;
+    width: 8vw;
+
+    font-weight: 800;
+    font-size: 1.5vw;
+
+    color: #E1E2EF;
+    background-color: #3FF25C;
+}
+.script-input{
+    border-style: solid;
+    border-width: 0.6vw;
+    border-radius: 1.3vw;
+    border-color: #030f24;
+}

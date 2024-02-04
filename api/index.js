@@ -3,6 +3,8 @@ const express = require('express');
 const fs = require('fs');
 const cors = require('cors');
 const multer = require('multer');
+const path = require('path');
+
 
 // Create an Express application
 const app = express();
@@ -136,3 +138,45 @@ app.delete("/api/techniques/delete/:name", (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 });
+
+//Retrieve Active Scripts
+app.get("/api/scripts/get", (req, res) => {
+    const folderPath = path.join(__dirname, '../backend/scripts');
+    fs.readdir(folderPath, (err, files) => {
+        if (err) {
+            console.error('Error reading folder:', err);
+            res.status(500).json({ error: 'Internal Server Error' });
+        } else {
+            res.json({ files });
+        }
+    });
+});
+
+//Return if LOGIN info is correct
+// app.post('/api/admins/post', (req, res) => {
+//     try {
+//       // Get the absolute path to the login.json file
+//       const loginFilePath = path.join(__dirname, 'logins.json');
+  
+//       // Read the login data from the JSON file
+//       const rawData = fs.readFileSync(loginFilePath);
+//       const loginData = JSON.parse(rawData);
+  
+//       const { username, password } = req.body;
+  
+//       // Check if the provided username and password match any entry in the loginData array
+//       const isValidUser = loginData.some((user) => user.username === username && user.password === password);
+  
+//       if (isValidUser) {
+//         // If valid, send a status of 200
+//         res.status(200).json({ message: 'Login successful' });
+//       } else {
+//         // If invalid, send a status of 401 (Unauthorized)
+//         res.status(401).json({ message: 'Incorrect username or password' });
+//       }
+//     } catch (error) {
+//       console.error('Error reading login data:', error);
+//       // Send a 500 status code only for critical errors
+//       res.status(500).json({ message: 'Internal Server Error', error: error.message });
+//     }
+//   });

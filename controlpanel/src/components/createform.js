@@ -49,6 +49,7 @@ const CreateForm = () => {
     }
 
     console.log('Form data submitted:', newTechnique);
+    window.location.reload();
   };
 
   const handleAddInput = (e) => {

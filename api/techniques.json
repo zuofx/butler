@@ -1,29 +1,19 @@
 [
   {
-    "name": "TEST7",
-    "desc": "dest2344",
-    "prompt": "hello",
-    "script": "hue_lights.py",
-    "extra": {
-      "ip": "696969"
-    }
-  },
-  {
     "name": "Connect to phue lights",
     "desc": "w",
     "prompt": "Turn on the lights",
     "script": "hue_lights.py",
     "extra": {
       "ip": "192.168.2.42",
-      "state": "on",
+      "state": "True",
       "hex": "#FFA500"
     }
   },
   {
     "name": "Test20",
     "prompt": "test",
-    "script": "testscript",
-    "description": "dwdwd",
+    "script": "testscript.exe",
     "extra": {}
   },
   {
@@ -45,6 +35,13 @@
     "prompt": "waitwait",
     "script": "waitwait",
     "desc": "waitwait",
+    "extra": {}
+  },
+  {
+    "name": "ewofhoiqwe",
+    "prompt": "2314y20",
+    "script": "fehqoiwefhiu",
+    "desc": "qwfehfiou",
     "extra": {}
   }
 ]

@@ -6,6 +6,7 @@ const Techniques = ({ name, desc, prompt, script, extra }) => {
 
   const [descEdited, setDescEdited] = useState(desc);
   const [promptEdited, setPromptEdited] = useState(prompt);
+  const [scriptEdited, setScriptEdited] = useState(script);
   const [extraEdited, setExtraEdited] = useState(extra ? { ...extra } : {});
 
   function handleEdit() {
@@ -13,12 +14,12 @@ const Techniques = ({ name, desc, prompt, script, extra }) => {
     else setEditState(0);
   }
 
-  function handleEditSave(editedDesc, editedPrompt, script, editedExtra) {
+  function handleEditSave(editedDesc, editedPrompt, editedScript, editedExtra) {
     const data = {
       name: name,
       desc: editedDesc,
       prompt: editedPrompt,
-      script: script,
+      script: editedScript,
       extra: editedExtra,
     };
 
@@ -42,6 +43,8 @@ const Techniques = ({ name, desc, prompt, script, extra }) => {
       .catch((error) => {
         console.error('Error during fetch:', error);
       });
+
+    window.location.reload();
   }
 
   function handleDelete(name) {
@@ -132,6 +135,17 @@ const Techniques = ({ name, desc, prompt, script, extra }) => {
             />
           </div>
 
+          <div className="name-edit-holder">
+            <div className="name-title">Script</div>
+            <input
+              className="name-input"
+              type="text"
+              value={scriptEdited}
+              placeholder="Enter script name (with extension)"
+              onChange={(e) => setScriptEdited(e.target.value)}
+            />
+          </div>
+
           {Object.entries(extra).map(([key, value], index) => (
             <div key={index} className="name-edit-holder">
               <div className="name-title">{key}</div>
@@ -150,7 +164,7 @@ const Techniques = ({ name, desc, prompt, script, extra }) => {
           ))}
 
           <a
-            onClick={() => handleEditSave(descEdited, promptEdited, script, extraEdited)}
+            onClick={() => handleEditSave(descEdited, promptEdited, scriptEdited, extraEdited)}
             className="edit-save"
           >
             SAVE
