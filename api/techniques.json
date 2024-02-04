@@ -1,8 +1,8 @@
 [
   {
     "name": "Connect to phue lights",
-    "desc": "w",
-    "prompt": "Turn on the lights",
+    "desc": "Turn on Philips Hue Light",
+    "prompt": "turn on the lights",
     "script": "hue_lights.py",
     "extra": {
       "ip": "192.168.2.42",
@@ -11,37 +11,10 @@
     }
   },
   {
-    "name": "Test20",
-    "prompt": "test",
-    "script": "testscript.exe",
-    "extra": {}
-  },
-  {
-    "name": "Y&Y&YE*&@Y&*E@Y&*E",
-    "desc": "1231231231231",
-    "prompt": "231231231231",
-    "script": "xxxxxxxxxxxxxxxxxxxxxxx",
-    "extra": {}
-  },
-  {
-    "name": "tw",
-    "prompt": "wet",
-    "script": "wet",
-    "desc": "wet",
-    "extra": {}
-  },
-  {
-    "name": "waitwait",
-    "prompt": "waitwait",
-    "script": "waitwait",
-    "desc": "waitwait",
-    "extra": {}
-  },
-  {
-    "name": "ewofhoiqwe",
-    "prompt": "2314y20",
-    "script": "fehqoiwefhiu",
-    "desc": "qwfehfiou",
+    "name": "Turn on Computer",
+    "desc": "Wake Computer",
+    "prompt": "wake the computer",
+    "script": "wakecomputer.py",
     "extra": {}
   }
 ]

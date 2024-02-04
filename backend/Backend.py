@@ -10,7 +10,7 @@ from pathlib import Path
 
 import string
 
-path = Path(__file__).parent / "../controlpanel/public/data/techniques.json"
+path = Path(__file__).parent / "../api/techniques.json"
 print(path)
 script_path = Path(__file__).parent / "../scripts/"
 print(script_path)
