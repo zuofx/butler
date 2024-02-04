@@ -1,4 +1,3 @@
-# from RealtimeSTT import AudioToTextRecorder
 from anyio import open_file
 # library that was used for real-time TTS 
 import json
@@ -7,6 +6,9 @@ import openai
 import os
 # Storing the sentences that were said to figure out what is being mentioned in real-time
 from pathlib import Path
+
+import colorsys
+from phue import Bridge
 
 
 path = Path(__file__).parent / "../../../controlpanel/public/data/techniques.json"
@@ -48,11 +50,5 @@ if __name__ == '__main__':
             prompt_words = jsonDataPrompt[i].split()  # Assuming jsonDataPrompt[i] is a string with two words
             if all(word in spoken_text.split() for word in prompt_words):
                 print(f"Prompt {jsonDataName[i]} was executed at the {len(wordList)}th sentence")
-
-                frag = "../scripts/"
-                script_path = Path(__file__).parent / frag
+                script_path = Path(__file__).parent / jsonDataScript[i]
                 exec(open(script_path).read(), globals())
-
-    # frag = "../scripts/"
-    # script_path = Path(__file__).parent / frag
-    # print(script_path)
