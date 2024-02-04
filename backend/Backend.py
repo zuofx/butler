@@ -8,6 +8,7 @@ import os
 # Storing the sentences that were said to figure out what is being mentioned in real-time
 from pathlib import Path
 
+import string
 
 path = Path(__file__).parent / "../controlpanel/public/data/techniques.json"
 print(path)
@@ -44,13 +45,15 @@ if __name__ == '__main__':
 
         wordList.append(recorder.text())
         spoken_text = wordList.pop()
-        print(spoken_text)
+        process_text = spoken_text.lower().translate(str.maketrans('', '', string.punctuation))
+        print(process_text)
+        
         # print(recorder.text())
         # adding new sentences to the wordList to keep track of         
 
         for i in range(len(jsonDataPrompt)):  # Use len(jsonDataPrompt) instead of jsonCounter
             prompt_words = jsonDataPrompt[i].split()  # Assuming jsonDataPrompt[i] is a string with two words
-            if all(word in spoken_text.split() for word in prompt_words):
+            if all(word in process_text.split() for word in prompt_words):
                 print(f"Prompt {jsonDataName[i]} was executed at the {len(wordList)}th sentence")
 
                 frag = "./scripts/" + jsonDataScript[i] + ""

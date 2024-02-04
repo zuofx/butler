@@ -2,7 +2,7 @@
     {
         "name":"Technique 1",
         "description":"Description 1",
-        "prompt":"Prompt 1.",
+        "prompt":"kill god",
         "script": "script1.py",
         "extra": ["ip address", "state", "hexcode"]
     },
