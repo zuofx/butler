@@ -15,12 +15,12 @@ const Login = () => {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const login = {
-        username: username,
-        password: password,
-      };
-
+      username: username,
+      password: password,
+    };
+  
     try {
       const response = await fetch('http://localhost:3002/api/admins/post', {
         method: 'POST',
@@ -33,13 +33,15 @@ const Login = () => {
       if (!response.ok) {
         throw new Error('Network response was not ok');
       }
-      if (response.status === 200) {
-        auth.login(username, password, true)
-        navigate('/admin')
 
+      console.log(response.status)
+  
+      // Check if auth is not null before calling login method
+      if (response.status === 200) {
+        auth.login(username, password, true);
+        navigate('/admin');
       } else {
-        alert('Improper Email or Password')
-        
+        alert('Improper Email or Password');
       }
   
       const responseData = await response.json();
@@ -47,9 +49,10 @@ const Login = () => {
     } catch (error) {
       console.error('Error during fetch:', error);
     }
-
+  
     console.log('Form data submitted:', login);
-};
+  };
+  
 
   return (
     <div className = "form-div">
