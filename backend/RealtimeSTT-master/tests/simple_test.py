@@ -2,9 +2,12 @@ from RealtimeSTT import AudioToTextRecorder
 from anyio import open_file
 # library that was used for real-time TTS 
 import json
+import openai
 
-import os
-
+from pathlib import Path
+path = Path(__file__).parent / "../../../api/techniques.json"
+with path.open() as f:
+    data = json.load(f)
 
 wordList = []
 # Storing the sentences that were said to figure out what is being mentioned in real-time
@@ -16,44 +19,63 @@ jsonDataScript = []
 
 jsonCounter = 0
 
-filePath = 'C:\\Users\\Xi Chen\\Documents\\GitHub\\QHACKS24\\controlpanel\\public\\data\\techniques.json'
-
-#os.path.join('..', '..', '..', 'controlpanel', 'public', 'data', 'techniques.json')
-
-f = open(filePath)
+f = open(path)
 data = json.load(f)
 
 print(data)
 
-# #def JSONUpdate(data):
-# for i in data:
-#     jsonDataName.append(i['name'])
-#     jsonDataPrompt.append(i['prompt'])
-#     jsonDataScript.append(i['script'])
-#     jsonCounter += 1
+#def JSONUpdate(data):
+for i in data:
+    jsonDataName.append(i['name'])
+    jsonDataPrompt.append(i['prompt'])
+    jsonDataScript.append(i['script'])
+    jsonCounter += 1
 
-# runTime = True
-# # variable to keep track of when the while loop is to be stopped
+runTime = True
+# variable to keep track of when the while loop is to be stopped
 
-# if __name__ == '__main__':
-#     recorder = AudioToTextRecorder(spinner=False, model="tiny.en", language="en")
+if __name__ == '__main__':
+    recorder = AudioToTextRecorder(spinner=False, model="tiny.en", language="en")
 
-#     print("Say something...")
-#     # prompt for the user
+    print("Say something...")
+    # prompt for the user
 
-#     while (runTime): 
-#         wordList.append(recorder.text())
-#         # adding new sentences to the wordList to keep track of what is being said
+    while (runTime): 
+        wordList.append(recorder.text())
+        # adding new sentences to the wordList to keep track of what is being said
 
-#         for i in jsonDataPrompt:
-#             if(i in wordList[-1]):
-#                 exec(open("C:\\Users\\Xi Chen\\Documents\\GitHub\\QHACKS24\\backend\\scripts\\script1.py").read(), globals())  
-#                 print("You exucuted the script.")
+        for i in range(jsonCounter):
+            if(i in wordList[-1]):
+                exec(open("C:\\Users\\Xi Chen\\Documents\\GitHub\\QHACKS24\\backend\\scripts\\" + jsonDataScript[i]).read(), globals())  
+                print("You exucuted the script.")
 
-#     print("You said: ", wordList)   
+    print("You said: ", wordList)   
 
 
+from RealtimeSTT import AudioToTextRecorder
+from anyio import open_file
+import openai
 
+
+# use openai 0.28.0
+def AIresponse (message):
+    openai.api_key = "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"
+    messages = [ {"role": "system", "content":  
+                "You are a intelligent assistant."} ] 
+
+    # Checks if the message has been set and if it create the appropriate response usinng ChatGPT
+    if message: 
+        messages.append( 
+            {"role": "user", "content": message}, 
+        ) 
+        chat = openai.ChatCompletion.create( 
+            model="gpt-3.5-turbo", messages=messages 
+        ) 
+    reply = chat.choices[0].message.content
+
+    # prints out response 
+    print(f"ChatGPT: {reply}") 
+    messages.append({"role": "assistant", "content": reply}) 
 
 
 
