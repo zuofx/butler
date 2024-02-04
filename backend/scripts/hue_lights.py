@@ -28,8 +28,7 @@ def access_lights(bridge_ip_address):
     light_names_list = b.get_light_objects('name')
     return light_names_list
 
-def edit_lights(bridge_ip_address, state, hue, saturation, brightness):
-    lights = access_lights(bridge_ip_address)
+def edit_lights(lights, state, hue, saturation, brightness):
 
     for light in lights:
         lights[light].on = state
@@ -40,9 +39,14 @@ def edit_lights(bridge_ip_address, state, hue, saturation, brightness):
 if __name__ == '__main__':
 
     bridge_ip_address = extra_values.get('ip', None)
-    state = extra_values.get('state', None)
+    state = bool(extra_values.get('state', None))
     hexcode = extra_values.get('hex', None)
 
-    hue, saturation, brightness = hex_to_hsb()
+    print(state)
 
-    edit_lights(bridge_ip_address, state, hue, saturation, brightness)
+    hue, saturation, brightness = hex_to_hsb(hexcode)
+
+    print(hue, saturation, brightness)
+    lights = access_lights(bridge_ip_address)
+
+    edit_lights(lights, state, hue, saturation, brightness)

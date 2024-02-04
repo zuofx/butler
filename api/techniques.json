@@ -6,7 +6,7 @@
     "script": "hue_lights.py",
     "extra": {
       "ip": "192.168.2.42",
-      "state": "on",
+      "state": "True",
       "hex": "#FFA500"
     }
   },
