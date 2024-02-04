@@ -1,4 +1,3 @@
-# from RealtimeSTT import AudioToTextRecorder
 from anyio import open_file
 # library that was used for real-time TTS 
 import json
@@ -7,6 +6,9 @@ import openai
 import os
 # Storing the sentences that were said to figure out what is being mentioned in real-time
 from pathlib import Path
+
+import colorsys
+from phue import Bridge
 
 
 path = Path(__file__).parent / "../../../controlpanel/public/data/techniques.json"
