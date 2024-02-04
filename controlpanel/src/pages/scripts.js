@@ -24,7 +24,7 @@ const Scripts = () => {
     return (
         <div className='scripts-container'>
             <FileUpload />
-            <h1>scripts</h1>
+            <h1>SCRIPTS:</h1>
             <div >
                 {scripts.map((script, index) => (
                     <div key={index} className='script-item'>
