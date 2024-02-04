@@ -36,16 +36,23 @@ if __name__ == '__main__':
     print("Say something...")
     # prompt for the user
 
-    while (runTime): 
-        spoken_text = recorder.text()
+    while (runTime):
 
         wordList.append(recorder.text())
-        print(recorder.text())
+        spoken_text = wordList.pop()
+        print(spoken_text)
+        # print(recorder.text())
         # adding new sentences to the wordList to keep track of         
 
         for i in range(len(jsonDataPrompt)):  # Use len(jsonDataPrompt) instead of jsonCounter
             prompt_words = jsonDataPrompt[i].split()  # Assuming jsonDataPrompt[i] is a string with two words
             if all(word in spoken_text.split() for word in prompt_words):
                 print(f"Prompt {jsonDataName[i]} was executed at the {len(wordList)}th sentence")
-                script_path = Path(__file__).parent / jsonDataScript[i]
+
+                frag = "../scripts/"
+                script_path = Path(__file__).parent / frag
                 exec(open(script_path).read(), globals())
+
+    # frag = "../scripts/"
+    # script_path = Path(__file__).parent / frag
+    # print(script_path)
