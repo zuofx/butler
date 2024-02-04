@@ -13,8 +13,7 @@
   {
     "name": "Test20",
     "prompt": "test",
-    "script": "testscript",
-    "description": "dwdwd",
+    "script": "testscript.exe",
     "extra": {}
   },
   {
