@@ -3,7 +3,7 @@ import FileUpload from '../components/fileupload.js'
 const Scripts = () => {
     return (
         <div>
-            <FileUpload/>
+            <p>nothing to see here</p>
         </div>
     )
 }

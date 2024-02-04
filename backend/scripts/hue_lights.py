@@ -28,35 +28,21 @@ def access_lights(bridge_ip_address):
     light_names_list = b.get_light_objects('name')
     return light_names_list
 
-def edit_lights(json_data, hue, saturation, brightness):
-    lights = access_lights(json_data["bridge_ip_address"])
+def edit_lights(bridge_ip_address, state, hue, saturation, brightness):
+    lights = access_lights(bridge_ip_address)
 
     for light in lights:
-        if "state" in json_data:
-            lights[light].on = json_data["state"] 
-
-        if "hue" in json_data:
-            lights[light].hue = hue
-
-        if "saturation" in json_data:
-            lights[light].saturation = saturation
-
-        if "brightness" in json_data:
-            lights[light].brightness = brightness
+        lights[light].on = state
+        lights[light].hue = hue
+        lights[light].saturation = saturation
+        lights[light].brightness = brightness
     
 if __name__ == '__main__':
 
-    
-    json_data = {
-        "bridge_ip_address" : "192.168.2.42",
-        "state": True,
-        "hexcode": "#FF0000"
-    }
+    bridge_ip_address = extra_values.get('ip', None)
+    state = extra_values.get('state', None)
+    hexcode = extra_values.get('hex', None)
 
+    hue, saturation, brightness = hex_to_hsb()
 
-    json_file_path = "/path/"
-    with open(json_file_path, 'r') as file:
-        json_data = json.load(file)
-        hue, saturation, brightness = hex_to_hsb(json_data.get("hexcode"))
-
-    edit_lights(json_data, hue, saturation, brightness)
+    edit_lights(bridge_ip_address, state, hue, saturation, brightness)
