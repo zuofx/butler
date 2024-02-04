@@ -3,49 +3,54 @@ from anyio import open_file
 # library that was used for real-time TTS 
 import json
 
+import os
+
+
 wordList = []
 # Storing the sentences that were said to figure out what is being mentioned in real-time
 
-# prompts
-prompt1 = "Test 1."
+jsonDataName = []
+jsonDataPrompt = []
+jsonDataScript = []
+# Used for storing the data from the JSON file for the techniques
 
-f = open("C:\\Users\\Xi Chen\\Documents\\GitHub\\QHACKS24\\controlpanel\\public\\data\\techniques.json")
+jsonCounter = 0
 
+filePath = 'C:\\Users\\Xi Chen\\Documents\\GitHub\\QHACKS24\\controlpanel\\public\\data\\techniques.json'
+
+#os.path.join('..', '..', '..', 'controlpanel', 'public', 'data', 'techniques.json')
+
+f = open(filePath)
 data = json.load(f)
-jsonData = []
 
-for i in data:
-    jsonData.append(i)
+print(data)
 
-# Initialize an empty dictionary to hold the name and prompt pairs
-name_prompt_dict = {}
+# #def JSONUpdate(data):
+# for i in data:
+#     jsonDataName.append(i['name'])
+#     jsonDataPrompt.append(i['prompt'])
+#     jsonDataScript.append(i['script'])
+#     jsonCounter += 1
 
-# Iterate through each item in the json_data list
-for item in jsonData:
-    # Use the 'name' value as the key and the 'prompt' value as the value for each dictionary entry
-    name_prompt_dict[item['name']] = item['prompt']
+# runTime = True
+# # variable to keep track of when the while loop is to be stopped
 
+# if __name__ == '__main__':
+#     recorder = AudioToTextRecorder(spinner=False, model="tiny.en", language="en")
 
+#     print("Say something...")
+#     # prompt for the user
 
-runTime = True
-# variable to keep track of when the while loop is to be stopped
+#     while (runTime): 
+#         wordList.append(recorder.text())
+#         # adding new sentences to the wordList to keep track of what is being said
 
-if __name__ == '__main__':
-    recorder = AudioToTextRecorder(spinner=False, model="tiny.en", language="en")
+#         for i in jsonDataPrompt:
+#             if(i in wordList[-1]):
+#                 exec(open("C:\\Users\\Xi Chen\\Documents\\GitHub\\QHACKS24\\backend\\scripts\\script1.py").read(), globals())  
+#                 print("You exucuted the script.")
 
-    print("Say something...")
-    # prompt for the user
-
-    while (runTime): 
-        wordList.append(recorder.text())
-        # adding new sentences to the wordList to keep track of 
-
-        if(prompt1 in wordList[-1]):
-            print("Prompt 1 was said")
-
-            exec(open("C:\\Users\\Xi Chen\\Documents\\GitHub\\QHACKS24\\backend\\scripts\\script1.py").read(), globals())
-
-    print("You said: ", wordList)   
+#     print("You said: ", wordList)   
 
 
 
