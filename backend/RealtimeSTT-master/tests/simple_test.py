@@ -2,9 +2,19 @@
 from anyio import open_file
 # library that was used for real-time TTS 
 import json
+from RealtimeSTT import AudioToTextRecorder
+import openai
+import os
+# Storing the sentences that were said to figure out what is being mentioned in real-time
+
+from pathlib import Path
+path = Path(__file__).parent / "./test.json"
+with path.open() as f:
+    data = json.load(f)
+    print(data)
+
 
 wordList = []
-# Storing the sentences that were said to figure out what is being mentioned in real-time
 
 jsonDataName = []
 jsonDataPrompt = []
@@ -20,9 +30,9 @@ print(data)
 
 #def JSONUpdate(data):
 for i in data:
-    jsonDataName.append(i['name'])
-    jsonDataPrompt.append(i['prompt'])
-    jsonDataScript.append(i['script'])
+    jsonDataName.append(['name'])
+    jsonDataPrompt.append(['prompt'])
+    jsonDataScript.append(['script'])
     jsonCounter += 1
 
 runTime = True
@@ -30,8 +40,8 @@ runTime = True
 
 if __name__ == '__main__':
 
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    print(script_dir)
+    # script_dir = os.path.dirname(os.path.abspath(__file__))
+    # print(script_dir)
 
     # file_path = os.path.join(os.getcwd(), 'test.json')
     # f = open(file_path)
@@ -47,38 +57,32 @@ if __name__ == '__main__':
         wordList.append(recorder.text())
         # adding new sentences to the wordList to keep track of 
 
-        if(prompt1 in wordList[-1]):
-            print("Prompt 1 was said")
-
-            exec(open("C:\\Users\\Xi Chen\\Documents\\GitHub\\QHACKS24\\backend\\scripts\\script1.py").read(), globals())
+        for i in range(jsonCounter):
+            if(jsonDataPrompt[i] in wordList[-1]):
+                print("Prompt 1 was said")
+                exec(open(Path(__file__).parent / "./test.json" + jsonDataScript[i]).read(), globals())
 
     print("You said: ", wordList)   
 
-
-from RealtimeSTT import AudioToTextRecorder
-from anyio import open_file
-import openai
-
-
 # use openai 0.28.0
-def AIresponse (message):
-    openai.api_key = "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"
-    messages = [ {"role": "system", "content":  
-                "You are a intelligent assistant."} ] 
+# def AIresponse (message):
+#     openai.api_key = "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"
+#     messages = [ {"role": "system", "content":  
+#                 "You are a intelligent assistant."} ] 
 
-    # Checks if the message has been set and if it create the appropriate response usinng ChatGPT
-    if message: 
-        messages.append( 
-            {"role": "user", "content": message}, 
-        ) 
-        chat = openai.ChatCompletion.create( 
-            model="gpt-3.5-turbo", messages=messages 
-        ) 
-    reply = chat.choices[0].message.content
+#     # Checks if the message has been set and if it create the appropriate response usinng ChatGPT
+#     if message: 
+#         messages.append( 
+#             {"role": "user", "content": message}, 
+#         ) 
+#         chat = openai.ChatCompletion.create( 
+#             model="gpt-3.5-turbo", messages=messages 
+#         ) 
+#     reply = chat.choices[0].message.content
 
-    # prints out response 
-    print(f"ChatGPT: {reply}") 
-    messages.append({"role": "assistant", "content": reply}) 
+#     # prints out response 
+#     print(f"ChatGPT: {reply}") 
+#     messages.append({"role": "assistant", "content": reply}) 
 
 
 
