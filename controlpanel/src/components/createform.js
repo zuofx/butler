@@ -99,7 +99,7 @@ const CreateForm = () => {
         </div>
 
         <div className = 'form-item'>
-            <label>Description</label>
+            <label>desc</label>
             <input
                 type = "text"
                 name = "desc"
